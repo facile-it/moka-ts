@@ -45,7 +45,7 @@
     "@types/node-fetch": "^2.5.12",
     "@types/redis": "^2.0.0",
     "@types/redis-mock": "^0.17.0",
-    "axios": "^0.28.0",
+    "axios": "^1.7.3",
     "eslint": "^8.16.0",
     "eslint-config-facile": "^0.5.0",
     "fp-ts": "^2.0.0",
