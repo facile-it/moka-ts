@@ -1,6 +1,10 @@
+<p align="center">
+<img src="./logo.png" width=150px" height="auto"/>
+</p>
+
 # fortepiano [ˌfɔrteˈpjaːno]
 
-_Playing actual music over `fp-ts` notes_
+_Playing actual music over `fp-ts` notes_ 🎶
 
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/facile-it/fortepiano/main)](https://github.com/facile-it/fortepiano/actions)
 [![Codecov](https://img.shields.io/codecov/c/gh/facile-it/fortepiano)](https://app.codecov.io/gh/facile-it/fortepiano)
@@ -9,36 +13,45 @@ _Playing actual music over `fp-ts` notes_
 
 ## Description
 
-`fortepiano` provides a set of common abstractions for functional application development (e.g., `Http`, `Storage`...), while extending [`fp-ts`](https://github.com/gcanti/fp-ts) with useful modules _à la_ [`fp-ts-contrib`](https://github.com/gcanti/fp-ts-contrib).
+Fortepiano is a mocking library for TypeScript. It promotes immutability, composability and purity, making it ideal for projects that embrace functional programming principles.
 
 ## Getting Started
 
-`fortepiano` stands on the shoulders of the giant `fp-ts`. As such, a good understanding of its [concepts](https://gcanti.github.io/fp-ts/) is suggested.
-
 ### Installation
 
-The package is available via [npm](https://www.npmjs.com/package/fortepiano), and must be installed along with its peer dependencies:
+To install the stable version:
 
+```bash
+npm install fortepiano
 ```
-npm install fortepiano fp-ts io-ts io-ts-types
+
+or using yarn:
+
+```bash
+yarn add fortepiano
 ```
-
-Additional packages are required, shall you want to use specific abstractions:
-
-- [`memcached`](https://www.npmjs.com/package/memcached) and [`@types/memcached`](https://www.npmjs.com/package/@types/memcached) (`cache/Memcached`)
-- [`redis`](https://www.npmjs.com/package/redis) and [`@types/redis`](https://www.npmjs.com/package/@types/redis) (`cache/Redis`)
-- [`axios`](https://www.npmjs.com/package/axios) (`http/Axios`)
-- [`@slynova/flydrive`](https://www.npmjs.com/package/@slynova/flydrive) (`storage/Flydrive`)
 
 ### Usage
 
-Import modules (e.g., values) from package index and types from specific modules. "Function" module and abstraction implementations are an exception:
+Fortepiano uses a functional API to create and configure mocks, encouraging pure function usage and immutable mock objects.
+
+Here's an example:
 
 ```typescript
-import { $type } from 'fortepiano'
-import { Struct } from 'fortepiano/struct'
-import { curry } from 'fortepiano/function'
-import { $axios } from 'fortepiano/http/Axios'
+import { $mock } from 'fortepiano'
+
+interface User {
+  firstName: string
+  lastName: string
+}
+
+export const UserMock = (): $mock.Mock<User> =>
+  $mock.struct({
+    firstName: $mock.string,
+    lastName: $mock.string,
+  })
+
+console.log(UserMock()()()) // Output: { firstName: 'randomString', lastName: 'randomString' }
 ```
 
 ## Contributing

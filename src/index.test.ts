@@ -1,6 +1,6 @@
-import { pipe, tupled } from 'fp-ts/function'
+import { constTrue, pipe, tupled } from 'fp-ts/function'
 import * as N from 'fp-ts/number'
-import { curry } from './function'
+import * as RA from 'fp-ts/ReadonlyArray'
 import {
   ap,
   Applicative,
@@ -33,9 +33,8 @@ import {
   undefined as _undefined,
   union,
   unknown,
-} from './Mock'
-import * as $RA from './ReadonlyArray'
-import * as $RR from './ReadonlyRecord'
+} from '.'
+import { curry } from './utils/function'
 
 describe('Mock', () => {
   describe('undefined', () => {
@@ -404,7 +403,14 @@ describe('Mock', () => {
     it('should return an array with random elements', () => {
       const xs = readonlyArray(number(), 2)()()
 
-      expect($RA.same(N.Eq)(xs)).toBe(false)
+      expect(
+        pipe(
+          xs,
+          RA.matchLeft(constTrue, (head, tail) =>
+            pipe(tail, RA.every(curry(N.Eq.equals)(head))),
+          ),
+        ),
+      ).toBe(false)
     })
     it('should allow returning a custom array', () => {
       const xs = readonlyArray(number())([1138, 1337])()
@@ -455,7 +461,14 @@ describe('Mock', () => {
     it('should return a record with random elements', () => {
       const xs = readonlyRecord(string, number(), 2)()()
 
-      expect($RR.same(N.Eq)(xs)).toBe(false)
+      expect(
+        pipe(
+          Object.values(xs),
+          RA.matchLeft(constTrue, (head, tail) =>
+            pipe(tail, RA.every(curry(N.Eq.equals)(head))),
+          ),
+        ),
+      ).toBe(false)
     })
     it('should allow returning a custom record', () => {
       const xs = readonlyRecord(string, number())({ foo: 1138, bar: 1337 })()

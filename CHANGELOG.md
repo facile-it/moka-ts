@@ -2,7 +2,53 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## Unreleased
+
+### Removed
+
+- Remove `Http` module.
+- Remove `Cache` module.
+- Remove `Memcached` module.
+- Remove `Buffer` module.
+- Remove `Stream` module.
+- Remove `Memory` module.
+- Remove `Redis` module.
+- Remove `Storage` module.
+- Remove `Axios` module.
+- Remove `Fetch` module.
+- Remove `Got` module.
+- Remove `Flydrive` module.
+- Remove `Fs` module.
+- Remove `Random` module.
+- Remove `Log` module.
+- Remove `Void` module.
+- Remove `GeneratorL` module.
+- Remove `number` module.
+- Remove `Console` module.
+- Remove `Crypto` module.
+- Remove `Binary` module.
+- Remove `Date` module.
+- Remove `AsyncYield` module.
+- Remove `Magma` module.
+- Remove `Matrix` module.
+- Remove `Option` module.
+- Remove `Reader` module.
+- Remove `ReaderEither` module.
+- Remove `ReaderTask` module.
+- Remove `ReaderTaskEither` module.
+- Remove `ReadonlyTuple` module.
+- Remove `TaskEither` module.
+- Remove `Validation` module.
+- Remove `Has` module.
+- Remove `Aggregate` module.
+- Remove `Eq` module.
+- Remove `string` module.
+- Remove `Error` module.
+- Remove `ReadonlyRecord` module.
+- Remove `ReadonlyArray` module.
+- Remove unused functions from `Yield`, `ReadonlyArray`, `Type`, `function` and `struct` modules.
 
 ## [0.1.9](https://github.com/facile-it/fortepiano/compare/v0.1.8...v0.1.9) - 2024-05-14
 
